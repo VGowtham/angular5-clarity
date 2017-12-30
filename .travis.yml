@@ -1,0 +1,44 @@
+language: node_js
+node_js:
+  - "7.0"
+env:
+  global:
+    - CXX=g++-4.8
+  matrix:
+    - TEST_SUITE='test:travis'
+    - TEST_SUITE='cssTest set1'
+    - TEST_SUITE='cssTest set2'
+    - TEST_SUITE='cssTest set3'
+    - TEST_SUITE='cssTest set4'
+
+sudo: required
+dist: trusty
+group: edge
+
+services:
+  - docker
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+      - google-chrome
+    packages:
+      - g++-4.8
+      - google-chrome-stable
+  artifacts:
+    paths:
+      - $TRAVIS_BUILD_DIR/gemini-report/
+cache:
+  apt: true
+  directories:
+    - node_modules
+
+before_install:
+
+before_script:
+  - npm install -g gemini
+  - npm install -g html-reporter
+
+script:
+  - npm run $TEST_SUITE # run unit test and css regression test sets in parallel

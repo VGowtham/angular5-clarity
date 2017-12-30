@@ -1,0 +1,45 @@
+<div class="cssload-tetrominos" *ngIf="showLoader">
+    <div class="cssload-tetromino cssload-box1"></div>
+    <div class="cssload-tetromino cssload-box2"></div>
+    <div class="cssload-tetromino cssload-box3"></div>
+    <div class="cssload-tetromino cssload-box4"></div>
+</div>
+<div class="alert alert-app-level alert-danger" *ngIf="emptyTodoAlert">
+        <div class="alert-items">
+            <div class="alert-item static">
+                <div class="alert-icon-wrapper">
+                    <clr-icon class="alert-icon" shape="exclamation-triangle"></clr-icon>
+                </div>
+                <div class="alert-text">
+                    Todo Cannot be Empty
+                </div>
+            </div>
+        </div>
+        <!-- <button type="button" class="close" aria-label="Close">
+            <clr-icon aria-hidden="true" shape="close"></clr-icon>
+        </button> -->
+</div>
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 margin-center" *ngIf="!showLoader">
+  <form>
+      <section class="form-block black-clr">
+        <button type="button" class="btn btn-icon custom-header-color white-clr" (click)="goToUsers()">
+            <clr-icon shape="caret" style="transform: rotate(270deg);"></clr-icon>
+        </button><label class="black-clr">{{username}}'s Todos</label>
+          <div class="form-group todo-container">
+              <div class="checkbox" *ngFor="let todo of userTodos">
+                  <input type="checkbox" [checked]="todo.completed" id="{{todo.id}}" (change)="changeTodoCompletion(todo)">
+                  <label for="{{todo.id}}" [ngClass]="{ 'strike-through' : todo.completed}">{{todo.title}}</label> 
+                  <a href="javascript:void(0)" role="tooltip" aria-haspopup="true" class="tooltip tooltip-sm tooltip-top-left" (click)="removeTodo(todo)">
+                    <clr-icon shape="times-circle" size="14"></clr-icon>
+                    <span class="tooltip-content">Remove Todo</span>
+                </a>
+              </div>
+          </div>
+          <div class="form-group">
+              <label for="addTodoText" class="black-clr">Add a Todo</label>
+              <input type="text" id="addTodoText" class="black-clr" [(ngModel)]="newTodo" placeholder="Todo" name="todo" size="45">
+              <button type="button" class="btn btn-primary custom-header-color white-clr" (click)="addTodo()">Add</button>
+          </div>
+      </section>
+  </form>
+</div>

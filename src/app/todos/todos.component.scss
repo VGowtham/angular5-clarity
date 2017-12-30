@@ -1,0 +1,40 @@
+.black-clr {
+color : black !important;
+}
+
+.margin-center {
+    margin : 0 auto;
+}
+
+.strike-through {
+    text-decoration : line-through;
+}
+
+.todo-container {
+    background-color : #d9e2e6;
+    height: 515px;
+    overflow-y: scroll;
+    word-break: break-word;
+}
+
+.pull-right {
+    float: right;
+}
+
+a:link{
+    color: #4d5f69 !important;
+}
+
+.tooltip-content {
+    background-color: black !important;
+    color: white !important; 
+}
+
+.tooltip-content::before {
+    border-right: .25rem solid black !important;
+    border-top: .20833rem solid black !important;
+}
+
+clr-icon {
+    outline: none !important;
+}
